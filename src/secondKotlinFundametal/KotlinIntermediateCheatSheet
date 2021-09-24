@@ -1,0 +1,63 @@
+###Kotlin Intermediate Cheat Sheet###
+
+#Functions
+Functions are isolated chunks of code that we can call when we need them.
+	fun sayHi(){
+        println("Hi")
+    }
+    println("One")// --> one
+    sayHi()  // --> Here we call our function Hi
+Functions are very useful because they allow us to modularize our code by separating concerns.
+
+#Arguments/Parameters
+Functions can also take in arguments, which can help us create more sophisticated code.
+	fun greet(name: String){
+        println("Hello $name")
+    }
+    greet("Fred")  // --> Prints 'Hello Fred'
+integer argument that helps us decide which message to print, as well as a string argument that allows us to personalize the message.
+	fun greet(type: Int, name: String){
+        if(type == 0){
+            println("Happy Birthday $name!")
+        }else{
+            println("Congratulations $name!")
+        }
+    }
+    greet(0, "Sara")  // --> Prints 'Happy Birthday Sara!'
+
+#Returning Values
+Functions can also return values.
+	fun add(num1: Int, num2: Int): Int{
+        return num1 + num2
+    }
+    println(add(4, 7))  // --> 11
+
+#Lists and Arrays
+Arrays are used to store multiple values in a single variable, instead of creating separate variables for each value.
+	val numArray = arrayOf(1, 2, 3)
+	val numList = listOf(1, 2, 3)
+	val mutableNumList = mutableListOf(1, 2, 3)
+**Lists are immutable. Once we create a List, we cannot make any changes to it.
+**Arrays are mutable. We can change each item at any time.
+[both Lists and Arrays have fixed sizes. After we initialize a List or an Array, we cannot add additional items. In order to add additional items]
+To print values from myList and myArray, we can use index values.
+	println(myList[4])  // --> Bike
+    println(myArray[2])  // --> false
+that in order to change items in a mixed Array (one that holds different data types), we need to declare the type of data that that will be accepted.  For the above example to work, we would need to add <Any> when creating myArray.
+    val myArray = arrayOf<Any>("Car", 15, false, 19, "Bike")
+
+#ArrayLists
+ArrayList class is used to create a dynamic array. Which means the size of ArrayList class can be increased or decreased according to requirement.
+	 val shoppingList = ArrayList()
+    	shoppingList.add("Eggs")// --> Eggs
+
+#2D ArrayLists
+create an ArrayList of ArrayList
+	    credentials = arrayListOf<ArrayList<String>>()
+	    credentials.add(arrayListOf("user1", "12345"))
+    	credentials.add(arrayListOf("user2", "password"))
+    	credentials.add(arrayListOf("Bob", "00000"))
+    	credentials.add(arrayListOf("Tim", "55555"))
+
+    	println(credentials[2][0])  // --> Bob
+    	println(credentials[0][1])  // --> 12345

@@ -1,0 +1,64 @@
+###Kotlin Intermediate Cheat Sheet###
+
+#Dictionaries
+Dictionaries in Kotlin are called Maps. A Map allows us to create key value pairs.
+Each key in the Map is unique and can be used to easily retrieve data.
+
+	val seats = mapOf(1 to "Sara", 2 to "Jim", 3 to "Jane")
+    println(seats[2])  // --> Jim
+    println(seats[0])  // --> null
+
+In order to add more pairs, we need to use a MutableMap.
+	val seats = mutableMapOf(1 to "Sara", 2 to "Jim", 3 to "Jane")
+    println(seats[2])  // --> Jim
+    println(seats[0])  // --> null
+    seats[0] = "Fred"
+    println(seats[0])  // --> Fred
+
+#OOP in Kotlin
+Kotlin is an object oriented programming language just like Java. Object oriented programming (OOP) allows us to solve the complex problem by using objects.
+**First, we will create a class Person that takes in a name. Each Person will have a function 'introduce' that will print a short introduction with their name. We will create two instances of our class and call the introduction function. We will not save these instances, meaning they will be lost once we instantiate them.
+	class Person(val name: String){
+        fun introduction(){
+            println("Hi, my name is $name")
+        }
+    }
+    Person("Tom").introduction()  // --> Hi, my name is Tom
+    Person("Sara").introduction()  // --> Hi,
+
+ In the next example we will create a class Car that does not take in any parameters. Each Car will be assigned a random color with the help of a list. We will then create an instance of a Car and change its color.
+ 	    class Car{
+        var color = ""
+        init {
+            val colors = listOf("Red", "Blue", "Green", "Yellow")
+            color = colors[Random.nextInt(colors.size)]  // --> colors.size is 4 in this case
+        }
+    }
+    val myCar = Car()
+    println(myCar.color)  // --> This will print the random color assigned to our car
+    myCar.color = "Silver"
+    println(myCar.color)  // --> Silver
+
+ In the last example, we will look at inheritance. We will create an abstract class Vehicle that does not take in any parameters. The class will also have a function that prints out the number of doors and a default color value of blue. We will then create two more classes that inherit the Vehicle class and with it the color blue. The two children classes will override the doors function to print the number of doors based on their type.
+ 	abstract class Vehicle{
+        var color = "Blue"
+        abstract fun doors()
+    }
+    class FamilyCar: Vehicle(){
+        override fun doors() {
+            println("This car has 4 doors")
+        }
+    }
+    class SportsCar: Vehicle(){
+        override fun doors() {
+            println("This car has 2 doors")
+        }
+    }
+    FamilyCar().doors()  // --> This car has 4 doors
+    println("The family car is ${FamilyCar().color}.")  // --> The family car is Blue.
+    val mySportsCar = SportsCar()
+    mySportsCar.doors()  // --> This car has 2 doors
+    mySportsCar.color = "Red"
+    println("The color of my sports car is ${mySportsCar.color}.")  // --> The color of my sports car is Red.
+
+
